@@ -1,1 +1,17 @@
-<h1>helloworld2</h1>
+<!-- <mat-toolbar> -->
+
+<div
+  class="container"
+  fxLayout="row"
+  fxLayout.lt-sm="column"
+  fxLayoutWrap="wrap"
+  fxLayoutAlign="flex-start"
+  fxLayoutGap="10px"
+>
+  <button style="height: 60px" [color]="'primary'" mat-raised-button>
+    <mat-icon matSuffix>add</mat-icon>
+  </button>
+  <app-header fxFlex="100%"></app-header>
+</div>
+
+<div class="list-container"></div>

@@ -16,7 +16,7 @@ export class MainWindow {
     this.mainWindow = new BrowserWindow({
       x: 0,
       y: 0,
-      width: 900,
+      width: 800,
       height: size.height,
       minWidth: 350,
       minHeight: 650,
