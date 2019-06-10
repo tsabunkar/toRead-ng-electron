@@ -3,28 +3,45 @@
   "directories": {
     "output": "release/"
   },
-    "files": [
-        "**/*",
-        "!**/*.ts",
-        "!*.code-workspace",
-        "!LICENSE.md",
-        "!package.json",
-        "!package-lock.json",
-        "!src/",
-        "!e2e/",
-        "!hooks/",
-        "!angular.json",
-        "!_config.yml",
-        "!karma.conf.js",
-        "!tsconfig.json",
-        "!tslint.json"
-    ],
+  "files": [
+    "**/*",
+    "!**/*.ts",
+    "!*.code-workspace",
+    "!LICENSE.md",
+    "!package.json",
+    "!package-lock.json",
+    "!src/",
+    "!e2e/",
+    "!hooks/",
+    "!angular.json",
+    "!_config.yml",
+    "!karma.conf.js",
+    "!tsconfig.json",
+    "!tslint.json"
+  ],
   "win": {
     "icon": "dist",
     "target": [
-      "portable"
-    ]
+      "nsis",
+      "nsis-web",
+      "zip"
+    ],
+    "publisherName": "TEJAS",
+    "certificateSubjectName": "SABUNKAR"
   },
+  "nsis": {
+    "oneClick": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "menuCategory": "Communication",
+    "shortcutName": "Kiss",
+    "perMachine": false,
+    "installerIcon": "src/assets/electron/icon.ico",
+    "uninstallerIcon": "src/assets/electron/icon.ico",
+    "runAfterFinish": true
+  },
+  "asarUnpack": "./node_modules/node-notifier/vendor/**",
+  "asar": true,
   "mac": {
     "icon": "dist",
     "target": [

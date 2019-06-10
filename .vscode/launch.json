@@ -1,19 +1,16 @@
 {
   "version": "0.2.0",
   "configurations": [{
-      "name": "Debug Main Process",
-      "type": "node",
+      "name": "Launch Angular",
+      "type": "chrome",
       "request": "launch",
-      "cwd": "${workspaceRoot}",
-      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
-      "windows": {
-        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
-      },
-      "program": "${workspaceRoot}/server/main.js",
-      "protocol": "inspector"
+      "preLaunchTask": "npm: start",
+      "url": "http://localhost:4200/#",
+      "webRoot": "${workspaceFolder}"
     },
+
     {
-      "name": "Debug Renderer Process",
+      "name": "Electron: Renderer",
       "type": "chrome",
       "request": "launch",
       "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
@@ -21,10 +18,54 @@
         "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
       },
       "runtimeArgs": [
-        "${workspaceRoot}/server/main.js",
+        "${workspaceRoot}/dist/server/main.js",
         "--remote-debugging-port=9222"
       ],
+      "timeout": 30000,
+      //"preLaunchTask": "npmStart",
       "webRoot": "${workspaceRoot}"
+    },
+
+
+    {
+      "name": "Electron Main Process",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/main.ts",
+      "outFiles": [
+        "${workspaceRoot}/server/main.js",
+      ],
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+      },
+      "args": ["--serve"],
+      "runtimeArgs": [
+        ".",
+      ],
+      "outputCapture": "std",
+      "preLaunchTask": "npm: electron:serve-tsc",
+    },
+    {
+      "name": "Electron Renderer Process",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/main.ts",
+      "outFiles": [
+        "${workspaceRoot}/server/main.js",
+      ],
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+      },
+      "args": ["--serve"],
+      "runtimeArgs": [
+        ".",
+      ],
+      "outputCapture": "std",
+      "preLaunchTask": "npm: electron:serve-tsc",
     }
   ]
 }
